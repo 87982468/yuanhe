@@ -1,0 +1,61 @@
+/* silde */
+.swipe-wrap{ position:relative; width:15000px;}
+.swipe-items{ float:left; position:relative;}
+.swipe-left,.swipe-right{ position:absolute; display:block; width:53px; height:53px; top:50%; margin-top:-26px;transition-duration:0.3s; line-height:53px; color:#333; font-size:38px; font-weight:normal; text-align:center;font-family: serif; z-index:333;background: rgba(255, 255, 255, 0.6);}
+.swipe-left:hover,.swipe-right:hover{background: rgba(255, 255, 255, 0.8); color:#000;}
+.swipe-left{left: 0;}
+.swipe-right{right: 0;}
+/* home */
+.js-home-wrap{ padding-top:88px;}
+.home-top-common{ float:left; height:243px;}
+.home-top-search{ width:528px;background: #a68113;}
+.home-top-news{ width:525px;background: #997506;}
+.top-search-inner{ padding:65px 0 0 50px;}
+.top-search-title h1{ float:left;}
+.top-search-subtitle{ float:left; font-size:30px;color: #fff;}
+.top-search-line{ float:left; border-left:1px solid #ede6d0; width:1px; height:39px; margin:0 16px 0 19px;}
+.top-search-content{ padding-top:26px;}
+.top-input-wrap{ float:left; width:354px; height:43px;background: #bca14e;}
+.top-input{width:98%;background:none;border:none 0; height:35px; color: #fff;padding-left:5px; font-size:14px;}
+.top-btn-wrap{ float:left; width:64px;}
+.top-input-btn{background: #bf9101;border:none 0;}
+.home-bot-common{ float:left; height:453px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+<?php if ( ! defined('IN_DILICMS')) exit('No direct script access allowed');
+$setting['cate_models']['resources_class']=array (
+  'id' => '3',
+  'name' => 'resources_class',
+  'description' => '资源分类',
+  'perpage' => '5',
+  'level' => '2',
+  'hasattach' => '0',
+  'built_in' => '0',
+  'fields' => 
+  array (
+    3 => 
+    array (
+      'id' => '3',
+      'name' => 'title',
+      'description' => '资源所属分类',
+      'model' => '3',
+      'type' => 'input',
+      'length' => '100',
+      'values' => '',
+      'width' => '0',
+      'height' => '0',
+      'rules' => 'required',
+      'ruledescription' => '',
+      'searchable' => '1',
+      'listable' => '1',
+      'order' => '1',
+      'editable' => '1',
+    ),
+    10 => 
+    array (
+      'id' => '10',
+      'name' => 'intro_title',
+      'description' => '分类描述的标题',
+      'model' => '3',
+      'type' => 'input',
+      'length' => '255',
+      'values' => '',
+      'width' => '0',
+      'height' => '0',
+      'rules' => '',
+      'ruledescription' => '',
+      'searchable' => '0',
+      'listable' => '0',
+      'order' => '2',
+      'editable' => '1',
+    ),
+    9 => 
+    array (
+      'id' => '9',
+      'name' => 'intro',
+      'description' => '分类描述',
+      'model' => '3',
+      'type' => 'textarea',
+      'length' => '0',
+      'values' => '',
+      'width' => '0',
+      'height' => '0',
+      'rules' => '',
+      'ruledescription' => '',
+      'searchable' => '0',
+      'listable' => '0',
+      'order' => '3',
+      'editable' => '1',
+    ),
+    8 => 
+    array (
+      'id' => '8',
+      'name' => 'counts',
+      'description' => '分类记录统计',
+      'model' => '3',
+      'type' => 'int',
+      'length' => '8',
+      'values' => '0',
+      'width' => '0',
+      'height' => '0',
+      'rules' => '',
+      'ruledescription' => '该分类中资源数目（暂时手动设置）',
+      'searchable' => '0',
+      'listable' => '0',
+      'order' => '4',
+      'editable' => '1',
+    ),
+  ),
+  'listable' => 
+  array (
+    0 => '3',
+  ),
+  'searchable' => 
+  array (
+    0 => '3',
+  ),
+);
