@@ -1,15 +1,16 @@
 <?php if ( ! defined('IN_DILICMS')) exit('No direct script access allowed');?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <body>
 
 
+<div class="headbar">
+	<div class="position"><span>系统</span><span>></span><span>用户管理</span><span>></span><span>添加用户</span></div>
+</div>
 <div class="content_box">
 	<div class="content form_content">
 	
-        <?php $this->load->library('form');  echo form_open('user/add'); ?>
+        <?php  $this->load->library('form');   echo form_open('user/add');  ?>
 			<table class="form_table">
 				<col width="150px" />
 				<col />
@@ -62,4 +63,6 @@
 	</div>
 </div>
 </body>
+
 </html>
+

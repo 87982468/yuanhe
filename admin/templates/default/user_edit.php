@@ -4,10 +4,26 @@
 </div>
 <div class="content_box">
 	<div class="content form_content">
-        <?php echo form_open('user/edit/'.$user->uid); ?>
+        <?php echo form_open('user/edit/'.$user->uid);   ?>
+        
+    
 			<table class="form_table">
 				<col width="150px" />
 				<col />
+				 
+				<tr>
+					<th> 会员类型</th>
+					<?php 
+					$result='';
+					
+					if($user->user_type)
+					       $result= $user->user_type;
+					?>
+					<td><?php $this->form->show('user_type','radio',array('1'=>'画家','2'=>'收藏家'),$result);?></td>
+					
+				</tr>
+			 
+
 				<tr>
 					<th> 用户名称：</th>
 					<td><?php $this->form->show('username','input','',$user->username); ?><label>*3-16位用户名称.</label><?php echo form_error('username'); ?></td>
@@ -24,6 +40,10 @@
 					<th> 用户EMAIL：</th>
 					<td><?php $this->form->show('email','input','',$user->email); ?><label>*有效的EMAIL地址.</label><?php echo form_error('email'); ?></td>
 				</tr>
+				 <tr>
+					<th> 手机：</th>
+					<td><?php $this->form->show('telphone','input','',$user->telphone); ?><label>*有效的手机号码.</label><?php echo form_error('telphone'); ?></td>
+				</tr>
                 <tr>
 					<th> 用户组：</th>
 					<td><?php $this->form->show('role','select',$roles,$user->role); ?><label>*设置用户组.</label><?php echo form_error('role'); ?></td>
@@ -31,6 +51,10 @@
 				<tr>
 					<th> 帐号状态：</th>
 					<td><?php $this->form->show('status','select',array(1 => '正常', 2 => '冻结'),$user->status); ?><label>*设置用户状态，设为冻结用户将不可登录.</label><?php echo form_error('status'); ?></td>
+				</tr>
+				<tr>
+					<th> 备注资料：</th>
+					<td><?php $this->form->show('memo','input','',$user->memo); ?><label>备注资料</label><?php echo form_error('memo'); ?></td>
 				</tr>
 				<tr>
 					<th></th>

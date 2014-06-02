@@ -68,6 +68,7 @@
                  <?php endforeach; ?>
                     <td>
                     	<a href="<?php echo base_url() .'../'. $model['name'] .'/detail/'. $v->id; ?>" target="_blank">访问</a>
+                    	
                     	<a href="<?php echo backend_url('content/form/','model='.$model['name'].'&id='.$v->id); ?>"><img class="operator" src="images/icon_edit.gif" alt="修改" title="修改"></a>
                         <a class="confirm_delete" href="<?php echo backend_url('content/del','model='.$model['name'].'&id='.$v->id); ?>"><img class="operator" src="images/icon_del.gif" alt="删除" title="删除"></a>
                         <?php $this->plugin_manager->trigger('row_buttons', $v); ?>
