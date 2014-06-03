@@ -37,7 +37,8 @@ class User extends CI_Controller
 		parent::__construct();	
 		//$this->_check_permit();
 		$this->load->model("User_mdl");
-
+		$this->load->library('form');
+		$this->load->library('form_validation');
 	}
 	
 	// ------------------------------------------------------------------------
@@ -51,8 +52,7 @@ class User extends CI_Controller
      */
 	public function index()
 	{
-		$this->load->library('form');
-		
+
 		$data['roles']= $this->User_mdl->get_roles();
 
 		$this->load->view('user_add',$data);
@@ -82,12 +82,15 @@ class User extends CI_Controller
 	public function _add_post()
 	{
 		$data['roles'] = $this->User_mdl->get_roles();
+		
 		if ( ! $this->_validate_user_form())
 		{
-			$this->_template('user_add', $data);
+			
+			$this->load->view('user_add', $data);
 		}
 		else
 		{
+			
 			$role_id = $this->User_mdl->add_user($this->_get_form_data());
 			
 			$this->_message('用户添加成功!', 'user/view', TRUE);	
@@ -188,7 +191,9 @@ class User extends CI_Controller
      */
 	private function _validate_user_form($name = '', $edit = FALSE)
 	{
-		$this->load->library('form_validation');
+		
+		//$this->load->library('form_validation');
+		
 		$callback = '|callback__check_user_name';
 		if ($name AND $name == trim($this->input->post('username', TRUE)))
 		{
@@ -201,10 +206,17 @@ class User extends CI_Controller
 			$this->form_validation->set_rules('confirm_password', '重复用户密码', 'trim|required|min_length[6]|max_length[16]|matches[password]');
 		}
 		$this->form_validation->set_rules('email', '用户EMAIL', 'trim|required|valid_email');
-		$this->form_validation->set_rules('role', '用户组', 'trim|required');
+		$this->form_validation->set_rules('user_type', '会员类型', 'trim|required');
+		
+		$this->form_validation->set_rules('telphone','手机号码','trim|required|is_numeric|exact_length[13]');
+		
+		//$this->form_validation->set_rules('role', '用户组', 'trim|required');
+		
+		
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->library('form');
+			//$this->load->library('form');
+			
 			return FALSE;
 		}
 		else
@@ -230,7 +242,7 @@ class User extends CI_Controller
 			$data['password'] = $this->input->post('password', TRUE);	
 		}
 		$data['email'] = $this->input->post('email', TRUE);
-		$data['role'] = $this->input->post('role', TRUE);
+		
 		$data['status'] = $this->input->post('status', TRUE);
 		
 		//电话
@@ -239,6 +251,10 @@ class User extends CI_Controller
 		$data['memo']=$this->input->post('memo',TRUE);
 		//默认状态为冻结状态
 		$data['status']="2";
+		//会员类型
+		$data['user_type']=$this->input->post('user_type',TRUE);
+		//角色默认3
+		$data['role'] = "3";
 		return $data;
 	}
 

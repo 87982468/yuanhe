@@ -1,16 +1,17 @@
 <?php if ( ! defined('IN_DILICMS')) exit('No direct script access allowed');?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta charset="utf-8"/>
+ </head>
 <body>
 
 
-<div class="headbar">
-	<div class="position"><span>系统</span><span>></span><span>用户管理</span><span>></span><span>添加用户</span></div>
-</div>
+
 <div class="content_box">
 	<div class="content form_content">
 	
-        <?php  $this->load->library('form');   echo form_open('user/add');  ?>
+        <?php   echo form_open('user/add');  ?>
 			<table class="form_table">
 				<col width="150px" />
 				<col />
@@ -40,14 +41,8 @@
 					<th> 用户EMAIL：</th>
 					<td><?php $this->form->show('email','input',''); ?><label>*有效的EMAIL地址.</label><?php echo form_error('email'); ?></td>
 				</tr>
-            	<tr>
-					<th> 用户组：</th>
-					<td><?php $this->form->show('role','select',$roles); ?><label>*设置用户组.</label><?php echo form_error('role'); ?></td>
-				</tr>
-				<tr>
-					<th> 帐号状态：</th>
-					<td><?php $this->form->show('status','select',array(1 => '正常', 2 => '冻结')); ?><label>*设置用户状态，设为冻结用户将不可登录.</label><?php echo form_error('status'); ?></td>
-				</tr>
+            	 
+				 
 				<tr>
 					<th> 备注资料：</th>
 					<td><?php $this->form->show('memo','input',''); ?><label>备注信息</label><?php echo form_error('memo'); ?></td>
@@ -55,7 +50,7 @@
 				<tr>
 					<th></th>
 					<td>
-						<button class="submit" type='submit'><span>添加用户</span></button>
+						<button class="submit" type='submit'><span>注册会员</span></button>
 					</td>
 				</tr>
 			</table>
