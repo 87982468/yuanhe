@@ -35,6 +35,7 @@ class Content extends Admin_Controller
 	public function __construct()
 	{
 		parent::__construct();	
+		   
 	}
 	
 	// ------------------------------------------------------------------------
@@ -47,6 +48,7 @@ class Content extends Admin_Controller
      */				
 	public function view()
 	{
+		
 		$this->_view_post();
 	}
 	
@@ -101,7 +103,21 @@ class Content extends Admin_Controller
 		$config['uri_segment'] = 3;
 		$config['suffix'] = '?model=' . $model['name'];
 			
+		// 判断权限,如果用户role不是0 和1则只显示create_user是会员追加的数据,可以进行显示
 		$condition = array('id >' => '0');
+		
+		 $this->load->library('session');
+	 
+		$roleid = $this->session->userdata('roleid');
+		$uid=$this->session->userdata('uid');
+		//画家组只显示自己添加的数据
+		if ($roleid==3)
+		{
+		$roleCondition=array('create_user'=>$uid);
+		  $condition= array_merge($condition,$roleCondition);
+		}
+		
+		
 		$data['where'] = array();
 		
 		foreach ($model['searchable'] as $v)
@@ -116,6 +132,7 @@ class Content extends Admin_Controller
 		$this->db->from($this->db->dbprefix('u_m_') . $model['name']);
 		$this->db->select('id, create_time');
 		$this->db->where($condition);
+	 
 		$this->field_behavior->set_extra_condition();
 		foreach ($model['listable'] as $v)
 		{
