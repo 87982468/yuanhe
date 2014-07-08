@@ -195,7 +195,9 @@ class User extends Admin_Controller
      */
 	private function _validate_user_form($name = '', $edit = FALSE)
 	{
+		 
 		$this->load->library('form_validation');
+			
 		$callback = '|callback__check_user_name';
 		if ($name AND $name == trim($this->input->post('username', TRUE)))
 		{
@@ -209,6 +211,8 @@ class User extends Admin_Controller
 		}
 		$this->form_validation->set_rules('email', '用户EMAIL', 'trim|required|valid_email');
 		$this->form_validation->set_rules('role', '用户组', 'trim|required');
+	
+		
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->library('form');
@@ -239,6 +243,13 @@ class User extends Admin_Controller
 		$data['email'] = $this->input->post('email', TRUE);
 		$data['role'] = $this->input->post('role', TRUE);
 		$data['status'] = $this->input->post('status', TRUE);
+		
+		//追加的三个字段
+		$data['telphone']=$this->input->post('telphone',TRUE);
+		$data['memo']=$this->input->post('memo',TRUE);
+		$data['user_type']=$this->input->post('user_type','TRUE');
+		
+		
 		return $data;
 	}
 

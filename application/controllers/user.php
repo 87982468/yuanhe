@@ -1,5 +1,5 @@
 <?php if ( ! defined('IN_DILICMS')) exit('No direct script access allowed');
- /**
+/**
  * DiliCMS
  *
  * 一款基于并面向CodeIgniter开发者的开源轻型后端内容管理系统.
@@ -27,29 +27,29 @@
 class User extends CI_Controller
 {
 	/**
-     * 构造函数
-     *
-     * @access  public
-     * @return  void
-     */
+	 * 构造函数
+	 *
+	 * @access  public
+	 * @return  void
+	 */
 	public function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
 		//$this->_check_permit();
 		$this->load->model("User_mdl");
 		$this->load->library('form');
 		$this->load->library('form_validation');
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 默认入口
-     *
-     * @access  public
-     * @param   int
-     * @return  void
-     */
+	 * 默认入口
+	 *
+	 * @access  public
+	 * @param   int
+	 * @return  void
+	 */
 	public function index()
 	{
 
@@ -59,67 +59,67 @@ class User extends CI_Controller
 	}
 
 	// ------------------------------------------------------------------------
-	  
+
 	/**
-     * 添加用户表单页
-     *
-     * @access  public
-     * @return  void
-     */
+	 * 添加用户表单页
+	 *
+	 * @access  public
+	 * @return  void
+	 */
 	public function add()
 	{
 		$this->_add_post();
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 添加用户表单生成/处理函数
-     *
-     * @access  public
-     * @return  void
-     */
+	 * 添加用户表单生成/处理函数
+	 *
+	 * @access  public
+	 * @return  void
+	 */
 	public function _add_post()
 	{
 		$data['roles'] = $this->User_mdl->get_roles();
-		
+
 		if ( ! $this->_validate_user_form())
 		{
-			
+
 			$this->load->view('user_add', $data);
 		}
 		else
 		{
-			
+
 			$role_id = $this->User_mdl->add_user($this->_get_form_data());
-			
-			$this->_message('用户添加成功!', 'user/view', TRUE);	
+
+			$this->_message('用户添加成功!', 'user/view', TRUE);
 		}
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 修改用户表单入口
-     *
-     * @access  public
-     * @param   int
-     * @return  void
-     */
+	 * 修改用户表单入口
+	 *
+	 * @access  public
+	 * @param   int
+	 * @return  void
+	 */
 	public function edit($id = 0)
 	{
 		$this->_edit_post($id);
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 修改用户表单生成/处理函数
-     *
-     * @access  public
-     * @param   int
-     * @return  void
-     */
+	 * 修改用户表单生成/处理函数
+	 *
+	 * @access  public
+	 * @param   int
+	 * @return  void
+	 */
 	public function _edit_post($id = 0)
 	{
 		$data['user'] = $this->User_mdl->get_user_by_uid($id);
@@ -135,20 +135,20 @@ class User extends CI_Controller
 		else
 		{
 			$this->User_mdl->edit_user($id, $this->_get_form_data(TRUE));
-			
+
 			$this->_message('用户修改成功!', 'user/edit/' . $id, TRUE);
 		}
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 删除用户
-     *
-     * @access  public
-     * @param   int
-     * @return  void
-     */
+	 * 删除用户
+	 *
+	 * @access  public
+	 * @param   int
+	 * @return  void
+	 */
 	public function del($id)
 	{
 		$user = $this->User_mdl->get_user_by_uid($id);
@@ -157,43 +157,43 @@ class User extends CI_Controller
 			$this->_message('不存在的用户!', '', FALSE);
 		}
 		$this->User_mdl->del_user($id);
-		$this->_message('用户删除成功!', '', FALSE); 
+		$this->_message('用户删除成功!', '', FALSE);
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 检查用户名称是否存在
-     *
-     * @access  public
-     * @param   string
-     * @return  bool
-     */
+	 * 检查用户名称是否存在
+	 *
+	 * @access  public
+	 * @param   string
+	 * @return  bool
+	 */
 	public function _check_user_name($name = '')
 	{
 		if ($this->User_mdl->get_user_by_name($name))
 		{
 			$this->form_validation->set_message('_check_user_name', '已经存在的用户名称！');
-			return FALSE;		
+			return FALSE;
 		}
 		return TRUE;
-	}	
-	
+	}
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 检查表单数据合法性
-     *
-     * @access  private
-     * @param   string
-     * @param   bool
-     * @return  bool
-     */
+	 * 检查表单数据合法性
+	 *
+	 * @access  private
+	 * @param   string
+	 * @param   bool
+	 * @return  bool
+	 */
 	private function _validate_user_form($name = '', $edit = FALSE)
 	{
-		
+
 		//$this->load->library('form_validation');
-		
+
 		$callback = '|callback__check_user_name';
 		if ($name AND $name == trim($this->input->post('username', TRUE)))
 		{
@@ -207,16 +207,16 @@ class User extends CI_Controller
 		}
 		$this->form_validation->set_rules('email', '用户EMAIL', 'trim|required|valid_email');
 		$this->form_validation->set_rules('user_type', '会员类型', 'trim|required');
-		
-		$this->form_validation->set_rules('telphone','手机号码','trim|required|is_numeric|exact_length[13]');
-		
+
+		$this->form_validation->set_rules('telphone','手机号码','trim|required|is_numeric|exact_length[11]');
+
 		//$this->form_validation->set_rules('role', '用户组', 'trim|required');
-		
-		
+
+
 		if ($this->form_validation->run() == FALSE)
 		{
 			//$this->load->library('form');
-			
+
 			return FALSE;
 		}
 		else
@@ -224,27 +224,27 @@ class User extends CI_Controller
 			return TRUE;
 		}
 	}
-	
+
 	// ------------------------------------------------------------------------
-	
+
 	/**
-     * 获取表单数据
-     *
-     * @access  private
-     * @param   bool
-     * @return  array
-     */
+	 * 获取表单数据
+	 *
+	 * @access  private
+	 * @param   bool
+	 * @return  array
+	 */
 	private function _get_form_data($edit = FALSE)
 	{
 		$data['username'] = $this->input->post('username', TRUE);
 		if ( ! ($edit AND ! $this->input->post('password', TRUE) AND ! $this->input->post('confirm_password', TRUE)))
 		{
-			$data['password'] = $this->input->post('password', TRUE);	
+			$data['password'] = $this->input->post('password', TRUE);
 		}
 		$data['email'] = $this->input->post('email', TRUE);
-		
+
 		$data['status'] = $this->input->post('status', TRUE);
-		
+
 		//电话
 		$data['telphone']=$this->input->post('telphone',TRUE);
 		//备注资料
@@ -258,8 +258,35 @@ class User extends CI_Controller
 		return $data;
 	}
 
+
+	/**
+	 *
+	 * 会员个人主页
+	 */
+
+	private function PersonHomeView()
+	{
+		$uid=$this->session->userdata('uid');
+		if($uid)
+		{
+			//个人详细信息
+			$user = $this->User_mdl->get_person_detail_info($uid);
+			//个人作品
+			$product=$this->User_mdl->get_person_product_info($uid);
+			$data=array("user"=>$user,"product"=>$product);
+			//作品的留言信息
+			
+			
+			$this->load->view('person_home',$data);
+		}else
+		{
+			show_error("用户信息不存在!");
+		}
+
+
+	}
 	// ------------------------------------------------------------------------
-	
+
 }
 
 /* End of file user.php */

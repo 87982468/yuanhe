@@ -52,5 +52,28 @@ class User_mdl extends CI_Model
 	{
 		return $this->db->where('username', $name)->get($this->db->dbprefix('admins'))->row();
 	}
+	
+	/**
+	 * 获取个人详细信息
+	 * Enter description here ...
+	 * @param unknown_type $uid
+	 */
+	public function  get_person_detail_info($uid)
+	{
+	 return $this->db->where('create_user',$uid)->get($this->db->dbprefix('admins'))->row();
+	 
+	}
+	
+	/**
+	 * 获取个人作品信息
+	 * Enter description here ...
+	 * @param unknown_type $uid
+	 */
+	public function get_person_product_info($uid)
+	{
+		return $this->db->where('create_user',$uid)->get($this->db->dbprefix('admins'))->row();
+	}
+	
+	
 }
 ?>

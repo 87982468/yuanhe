@@ -55,8 +55,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '57975846';
-$db['default']['database'] = 'chian2';
+$db['default']['password'] = 'sunway';
+$db['default']['database'] = 'dilicms';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'dili_';
 $db['default']['pconnect'] = FALSE;

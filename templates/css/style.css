@@ -1,0 +1,273 @@
+/* CSS Document */
+*{padding:0;margin:0}
+ul,li{list-style:none;}
+a{text-decoration:none;}
+/* 首页Banner */
+.header{
+	position: relative;
+	width: 1414px;
+	margin: 0 auto;
+}
+/* banner设置 以及登陆信息 */
+.banner h1{position:absolute;top:115px;left:215px; color:#5a5837;font-size:24px;font:"Californian FB", cursive;}
+.banner a{position:absolute;text-decoration:none;}
+.banner a:hover{color:#CCCC66;}
+.banner .login{left:893px;}
+.banner .reg{left:941px;}
+.banner .ly{color:#e9e9d1;font-size:16px;top:9px;}
+.banner .lw{color:#ffffef;font-size:13px;top:12px;}
+.banner .setindex{left:992px;}
+.banner .fova{left:1058px;}
+.header{position:relative;margin:0 auto;}
+
+/*检索 */
+.keyword {position:absolute; left:761px;top:67px;}
+.keyword li{float:left;padding-left:12px;}
+.keyword a{position:relative;font-size:12px;color:black;}
+
+.search_reg {position:absolute; left:761px;top:88px;}
+.search_reg input{position:relative;width:276px;height:30px; border-color:#808159; outline:none; border-width:1px;float:left;}
+.search_reg a{
+	position:relative;
+	display:block;
+	width:47px;
+	height:32px;
+	background-color:#808159;
+	text-align:center;
+	float:left; 
+	line-height:30px;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+	}
+
+
+/* 首页导航 */
+.nav{height:33px;background:url(../img/nav_bg.jpg) repeat-x;text-align:center;overflow:hidden;}
+.nav li{display:block;float:left;padding:0 30px ;height:33px; }
+
+.nav ul{margin-left:250px;}
+.nav .line{width:2px; padding:0;background:url(../img/nav_line.png) no-repeat ; display:block; margin-top:5px; }
+.nav li a{display:block;color:#fdf9f8;font-size:12px;text-decoration:none;margin-top:10px;}
+.nav li a:hover{color:#fcffb3;}
+
+/* 二级导航 */
+.nav2{height:32px;width:999px;background:url(../img/nav2_bg.jpg) repeat-x; overflow:hidden; margin:0 auto;}
+.nav2 li{float:left;padding:3px 15px;}
+.nav2 li a{color:#000;font-size:12px;text-decoration:none;}
+.nav2 li a:hover{color:#65650a;font-size:12px;}
+
+.nav dl{width:108px;font-size:12px;background:#808159;position:absolute;top:187px;margin-left:-30px; z-index:10;}
+.nav dl dd{ padding-bottom:3px;}
+.nav dl dd a{color:#FDF9F8;}
+.nav dl dd a:hover{color:#000;background:#FDF9F8;opacity:0.5;}
+
+/* 首页内容 */
+.canvas {
+	background:url(../img/bg.jpg) no-repeat #f2f2f2;
+	overflow:hidden;
+	height:auto;
+	margin:0 auto;
+	}
+	
+.spread {width:999px;background-color:#FFF;margin:0 auto;overflow:hidden;}
+
+.spread > div{
+	margin-top:5px;
+	margin-left:5px;
+	float:left;
+	border-style: solid; 
+	border-width: 1px;
+	border-color:#cdcbcc;
+	}
+	
+/* 轮播功能 */
+.v_photo {
+	position: relative; 
+	width:73%;
+	height:334px;
+	overflow: hidden;  
+	}
+	
+.v_photo ul li { float: left; }
+		
+.v_photo .btn, .v_photo .dot {
+	-webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	-moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	-ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	-o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
+
+.v_photo .dots {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+}
+.v_photo .dots li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 4px;
+
+	text-indent: -999em;
+
+	border: 2px solid #fff;
+	border-radius: 6px;
+
+	cursor: pointer;
+	opacity: .4;
+
+	-webkit-transition: background .5s, opacity .5s;
+	-moz-transition: background .5s, opacity .5s;
+	transition: background .5s, opacity .5s;
+}
+.v_photo .dots li.active {
+	background: #fff;
+	opacity: 1;
+}
+
+.v_photo .arrows {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	color: #fff;
+}
+.v_photo .arrow {
+	display: inline;
+	padding-left: 10px;
+	cursor: pointer;
+}
+/* 作品检索 */		
+
+.s_photo{
+	margin-left:9px;
+	width:251px;
+	height:334px;
+	overflow:hidden;
+	}
+.title_img {
+	overflow:hidden;
+	background:url(../img/div_bg.gif) no-repeat;
+	width:252px;
+	height:42px;
+	}
+	
+	.title_img span{
+		display:block;
+		overflow:hidden;
+		font-weight:bold;
+		font-size:14px;
+		color:#fefcfc;
+		margin-left:16px;
+		margin-top:13px ;
+	}
+.search_img{
+	padding-top:4px;
+	text-align:center;
+	float:left;
+	}
+		.search_img span{
+			display:block;
+			color:#ce0c00;
+			font-size:12px;
+			text-align:center;
+			margin:10px 0 0 0;
+			font-weight:bold;
+		}
+		.search_img a span:hover{color:#09f;}
+		
+		
+		.search_img ul{ margin-left:10px; text-align:center;}
+		.search_img ul li {
+			text-align:center;
+			float:left;
+			padding:7px 10px 8px 10px;
+			font-size:12px;
+			background:#c1e7e7;
+			margin:13px 21px 0 0;
+			}
+			.search_img ul li a{color:#030303;}
+					.search_img ul li:hover{background:#09F;}
+					.search_img ul li a:hover{color:#FFF;}
+		
+/* CMS 标题头*/
+.cms_a{position: relative; width:73%;height:279px;overflow:hidden;}
+
+.c_bg{height:25px;float:left; border-style: solid; border-width: 1px;border-color:#cdcbcc;margin-left:-1px;margin-top:-1px;background:url(../img/cms_bg.gif);}
+
+.r{text-align:right;}
+
+.c_bg span{font-size:12px; color:#ca0800;display:block;margin:8px 7px; font-weight:bold;}
+
+.c_bg a{display:block;margin-right:10px; margin-top:5px;}
+
+/*  CMS */
+.cms_content{width:362px;height:250px;float:left;}
+
+.main_t span{display:block;margin-top:15px;margin-left:8px;font-size:12px;color:#d40005;}
+.main_t a span:hover{color:#09F;}
+
+.main_i{float:left;width:98px;height:100%;margin:10px 10px;}
+.main_i P{font-size:12px;color:#505050;}
+.main_i P:hover{color:#09F;}
+
+.cms_text ul{margin-top:5px;}
+.cms_text ul li {padding-top:4px; list-style-image:url(../img/d.jpg);}
+.cms_text ul li a{font-size:12px;color:#505050;}
+.cms_text ul li a:hover{color:#09F;}
+
+.l span{text-align:left; margin-left:12px;}
+
+.s_photo .main_i{margin-left:5px;margin-top:15px; width:110px;height:100px;}
+.s_photo .main_i p{ display:block;margin-top:7px; text-align:center; }
+
+/* 虚线 */
+.cms_virtual{margin-top:11px;margin-left:10px;height:228px;background:url(../img/virtul.gif);width:1px;float:left;}
+
+/* 广告位*/
+.ad_main{width:988px;height:72px; overflow:hidden; }
+.ad_main ul li {float:left;padding-right:3px;}
+
+/* 画家会员*/
+.member{width:988px;height:155px; overflow:hidden;}
+.member .c_bg{ border-left-style:none; border-right-style:none; margin-left:0px;margin-top:-1px;}
+
+.artist ul li{float:left;padding:12px 0px 0px 7px;}
+
+.cms_b{width:988px;height:408px;background:#d9d9d9;position:relative;}
+
+.cms_b div {float:left;}
+
+.cms_syzs{width:729px;background:#FFFFFF;height:400px;float:left;}
+
+/* 书画知识*/
+.bl{width:160px;background:url(../img/nav3_bg.jpg);height:30px;}
+
+.bl span{color:#FFFFFF;font-size:12px; font-weight:bold; display:block;padding-left:8px;padding-top:10px;}
+
+.sanjiao{width:22px;height:30px; background:url(../img/sanjiao.jpg);}
+
+.hese{width:547px;height:30px; background:url(../img/nav4_bg.jpg);}
+
+/* 热点博文 */
+.cms_rdbw{width:250px; height:400px;background:#FFFFFF;margin-left:5px;}
+
+.rd_header{height:30px; width:250px;background:url(../img/nav5_bg.jpg);float:left;}
+.rd_header span{ font-size:14px;color:#FFFFFF; display:block; padding-top:8px ;padding-left:10px; font-weight:bold;}
+.rd_header a{padding-right:5px; margin-top:3px; display:block;}
+.bowen ul {margin:15px 15px;}
+.bowen ul li { padding-bottom:11px; font-size:12px; }
+.bowen ul li a{color:#000000;}
+
+.footer{margin:22px auto; text-align:center;width:988px; }
+.gray_line{width:988px;height:3px;background:#b4b3b3;float:left;}
+
+.fo_info {margin-top:20px;text-align:center }
+.fo_info *{font-size:12px; font-weight:normal;}
+.fo_info h3{color:#505050; }
+.fo_info ul{margin:10px; }
+.fo_info li{padding:10px 5px; display:inline;}
+.fo_info li a{color:#194787;}
+

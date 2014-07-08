@@ -60,7 +60,7 @@ class News extends CI_Controller {
 		$rows = 20;
 		$segment = 5;
 		$this->load->helper('global');
-		$this->db->where($_w);
+		
 		$data['page'] = page_html("news/lists/{$classid}/{$subclassid}", $this->db->count_all_results($this->db->dbprefix('u_m_news')), $rows, $segment);
 		$this->db->order_by('create_time', 'DESC');
 		$this->db->offset($this->uri->segment($segment, 0));

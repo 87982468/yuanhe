@@ -104,6 +104,7 @@ class Login extends CI_Controller
 						if ($admin->status == 1)
 						{
 							$this->session->set_userdata('uid', $admin->uid);
+							$this->session->set_userdata('roleid', $admin->role);
 							redirect(setting('backend_access_point') . '/system/home');
 						}
 						else

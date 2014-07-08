@@ -25,7 +25,7 @@
 			<col width="40px" />
 			<col />
 			<tbody>
-            <?php foreach($list as $v) : ?>
+            <?php  foreach($list as $v) : ?>
             	<tr>
                 	<td></td>
                 	<td><?php echo $v->name; ?></td>

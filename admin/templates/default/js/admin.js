@@ -139,3 +139,18 @@ function select_tab(id,target)
 	li.parent().children('li').removeClass('selected');
 	li.addClass('selected');
 }
+
+function dispayImage(url,obj)
+{
+	var path=$(obj).val();
+	
+	var iWidth =600;
+	var iHeight=600;
+	var iTop = (window.screen.height-30-iHeight)/2; //获得窗口的垂直位置;   
+	var iLeft = (window.screen.width-10-iWidth)/2; //获得窗口的水平位置;
+	// iWidth 弹出窗口的宽度   
+	// iHeight 弹出窗口的高度
+  	window.showModalDialog(url+"index.php/content/imageEdit?path="+path,"图片编辑",'dialogHeight='+iHeight+',dialogWidth='+iWidth+',dialogTop='+iTop+',dialogLeft='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+  	
+}
+ 

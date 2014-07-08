@@ -9,7 +9,7 @@
 <div class="content_box">
 	<div class="content form_content">
 	
-        <?php $this->load->library('form');  echo form_open('user/add'); ?>
+        <?php  echo form_open('user/add'); ?>
 			<table class="form_table">
 				<col width="150px" />
 				<col />

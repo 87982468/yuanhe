@@ -1,0 +1,82 @@
+<?php
+
+
+class Home_mdl extends CI_Model
+{
+	/**
+	 * 构造函数
+	 *
+	 * @access  public
+	 * @return  void
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+
+	/**
+	 * 获取菜单
+	 *
+	 * @access  public
+	 * @return  object
+	 */
+	public function get_Menu()
+	{
+			
+		return  $this->db->select('classid,parentid,level, menu_name,menu_link,sort')->order_by('parentid ,sort', 'ASC')->get($this->db->dbprefix('u_c_menu'))->result_array() ;
+	}
+
+
+	
+	public function  get_ShuHuaZhiShiLanMu()
+	{
+		
+			$where="书画知识";
+		$result=  $this->db->select('classid')->where('menu_name',$where)->get($this->db->dbprefix('u_c_menu'))->result_array() ;
+
+		if(count($result)>0)
+		{
+			//获取书画知识ID
+			$shuHuaZhiShiID=$result[0]['classid'];
+			$result= $this->db->select('classid,menu_name')->where('parentid',$shuHuaZhiShiID)->order_by('sort', 'ASC')->get($this->db->dbprefix('u_c_menu'))->result_array() ;
+		}
+		
+		
+		return $result;
+	}
+	
+
+	/**
+	 * 获取书画知识的信息
+	 * Enter description here ...
+	 */
+	public function  get_CmsContent()
+	{
+
+
+		$where="书画知识";
+		$result=  $this->db->select('classid')->where('menu_name',$where)->get($this->db->dbprefix('u_c_menu'))->result_array() ;
+
+		if(count($result)>0)
+		{
+			//获取书画知识ID
+			$shuHuaZhiShiID=$result[0]['classid'];
+				
+				
+			$table_menu = $this->db->dbprefix('u_c_menu');
+			$table_cms = $this->db->dbprefix('u_m_cms');
+
+			return $this->db->select(" $table_cms.title, $table_cms.detail_info, $table_cms.id, $table_menu.menu_name")
+			->where('parentid',$shuHuaZhiShiID)
+			->from($table_menu)
+			->join($table_cms, "$table_menu.classid = $table_cms.menu_name")
+			->order_by('sort', 'ASC')
+			->get()
+			->result_array();
+		}
+
+	}
+
+}
+?>
