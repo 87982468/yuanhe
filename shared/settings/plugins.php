@@ -15,4 +15,14 @@ $setting['plugins']=array (
     ),
     'access' => '0',
   ),
+  'helloworld' => 
+  array (
+    'classmap' => 
+    array (
+    ),
+    'menus' => 
+    array (
+    ),
+    'access' => '0',
+  ),
 );

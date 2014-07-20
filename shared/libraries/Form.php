@@ -476,6 +476,7 @@ class Form
 		}
 		if (count($options = explode('|', $field['values'])) != 5)
 		{
+			
 			return '数据源格式不正确';
 		}
 		$ci = & get_instance();
@@ -536,6 +537,7 @@ class Form
 	{
 		if ( ! $this->_get_data_from_model($field, TRUE))
 		{
+			
 			return '获取数据源时出错了!';
 		}
 		return $this->_select($field, $default);
@@ -593,10 +595,12 @@ class Form
 	{
 		if ( ! $field['values'])
 		{
+			
 			return FALSE;
 		}
 		if (count($options = explode('|', $field['values'])) != 2 )
 		{
+			
 			return FALSE;
 		}
 		$ci = & get_instance();
@@ -604,14 +608,17 @@ class Form
 		{
 			return FALSE;
 		}
+		
 		$ci->settings->load('category/data_' . $options[0]);
 		$model_data =  & setting('category');
+		
 		$field['values'] = array();
 		foreach ($model_data[$options[0]] as $v)
 		{
 			$field['values'][$v['classid']] = $v[$options[1]];
 			$need_level AND $field['levels'][$v['classid']] = $v['deep'];
 		}
+		
 		return TRUE;
 	}
 	

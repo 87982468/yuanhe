@@ -181,43 +181,50 @@ $setting['menus']=array (
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'companies',
-            'menu_name' => '公司管理',
+            'extra' => 'cms',
+            'menu_name' => '文章管理',
           ),
           1 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'products',
-            'menu_name' => '产品管理',
+            'extra' => 'person_product',
+            'menu_name' => '作品发布',
           ),
           2 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'resources',
-            'menu_name' => '资源管理',
+            'extra' => 'person_detail_info',
+            'menu_name' => '会员详细信息',
           ),
           3 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'projects',
-            'menu_name' => '项目管理',
+            'extra' => 'message',
+            'menu_name' => '留言管理',
           ),
           4 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'news',
-            'menu_name' => '新闻管理',
+            'extra' => 'advert',
+            'menu_name' => '广告管理',
           ),
           5 => 
           array (
             'class_name' => 'content',
             'method_name' => 'view',
-            'extra' => 'messages',
-            'menu_name' => '留言板',
+            'extra' => 'search_key',
+            'menu_name' => '查询关键字',
+          ),
+          6 => 
+          array (
+            'class_name' => 'content',
+            'method_name' => 'view',
+            'extra' => 'browse_record',
+            'menu_name' => '浏览记录',
           ),
         ),
       ),
@@ -233,36 +240,22 @@ $setting['menus']=array (
           array (
             'class_name' => 'category_content',
             'method_name' => 'view',
-            'extra' => 'companies_class',
-            'menu_name' => '公司分类',
+            'extra' => 'product_mark',
+            'menu_name' => '作品关键字',
           ),
           1 => 
           array (
             'class_name' => 'category_content',
             'method_name' => 'view',
-            'extra' => 'resources_class',
-            'menu_name' => '资源分类',
+            'extra' => 'product_type',
+            'menu_name' => '作品分类',
           ),
           2 => 
           array (
             'class_name' => 'category_content',
             'method_name' => 'view',
-            'extra' => 'projects_class',
-            'menu_name' => '项目分类',
-          ),
-          3 => 
-          array (
-            'class_name' => 'category_content',
-            'method_name' => 'view',
-            'extra' => 'news_class',
-            'menu_name' => '新闻分类',
-          ),
-          4 => 
-          array (
-            'class_name' => 'category_content',
-            'method_name' => 'view',
-            'extra' => 'products_class',
-            'menu_name' => '产品分类',
+            'extra' => 'menu',
+            'menu_name' => '栏目分类',
           ),
         ),
       ),

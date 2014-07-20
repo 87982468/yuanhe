@@ -1,0 +1,17 @@
+<script src="jquery-1.8.3.min.js"></script>
+ <link rel="stylesheet" href="jquery.Jcrop.css">
+ <script src="jquery.Jcrop.js"></script>
+ <script src="jquery.form.js"></script>
+ <script src="crop_photo.js"></script>
+ <form id="form_photo" action="example/upload_photo" enctype="multipart/form-data" accept-charset="utf-8" method="post">
+Í·Ïñ£º<input id="photo_src" type="file" name="photo_src"/> 
+</form>
+<form id="save_photo" action="content/save_photo" accept-charset="utf-8" method="post">
+<input type="hidden" name="p_x" id="p_x" value="">
+<input type="hidden" name="p_y" id="p_y" value="">
+<input type="hidden" name="p_h" id="p_h" value="">
+<input type="hidden" name="p_w" id="p_w" value="">
+<input type="hidden" name="p_k" id="p_k" value="">
+</form>
+<input id="button_photo" type="button" value="ÉÏ´«" />
+ 

@@ -7,13 +7,16 @@ $setting['current_role']=array (
     0 => 'content@view',
     1 => 'content@form@add',
     2 => 'content@form@edit',
-    3 => 'user@edit',
+    3 => 'content@save@add',
+    4 => 'content@save@edit',
+    5 => 'content@del',
   ),
   'models' => 
   array (
-    0 => 'news',
-    1 => 'messages',
-    2 => 'publised_product',
+    0 => 'cms',
+    1 => 'person_product',
+    2 => 'person_detail_info',
+    3 => 'message',
   ),
   'category_models' => 
   array (
