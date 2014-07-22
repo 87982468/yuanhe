@@ -226,6 +226,13 @@ $setting['menus']=array (
             'extra' => 'browse_record',
             'menu_name' => '浏览记录',
           ),
+          7 => 
+          array (
+            'class_name' => 'content',
+            'method_name' => 'view',
+            'extra' => 'cms_comment',
+            'menu_name' => '文章评论',
+          ),
         ),
       ),
       1 => 

@@ -35,38 +35,42 @@
         </div>
  <div class="comment">
         	<img src="img/comment.png"/>
-            <textarea></textarea>
+            <textarea id="content" name="content"></textarea>
             <div class="comitText">
-                <input type="button" class="btn" value="发表评论" />
-            	<input type="text" style="width:135px"/>
-                <input type="text" style="width:88px" />
-                <img src="img/yzm00001.png" />
+                <input type="button" class="btn" id="chk_num" value="发表评论" />
+            	<input type="text" id="user_name" name="user_name" style="width:135px"/>
+                <input type="text" id="code_num" style="width:88px" />
+                 
+                <input type="hidden"" id="cmsid" value=<?php echo $result[0]['id']; ?> />
+                
+                <input type="hidden" id="cmstitle" value=<?php echo $result[0]['title']; ?> />
+                <input type="hidden" id="baseurl" value=<?php echo base_url();?> />
+              <img src="code_num.php" id="getcode_num" title="看不清，点击换一张" align="absmiddle">
+                 
             </div>
             <em>注：网友评论只供表达个人看法，并不代表本网站其看法或者证实其描述</em>
             <div class="comcont">
-            	<p>已有 1 位对此新闻感兴趣的网友发表了看法</p>
-                <ul>
-                    <li>
-                        <img src="img/plico.png" />
-                        2014-07-20 14:51:56 
-                        <a>张三</a>
-                        发表评论
-                        <p>很棒的画家！</p>
-                    </li>
-                   <li>
-                        <img src="img/plico.png" />
-                        2014-07-20 14:51:56 
-                        <a>李四</a>
-                        发表评论
-                        <p>很棒的画家阿拉卡睡大觉了卡机放辣椒水电费垃圾啊了双方将拉丝级！</p>
-                    </li>
-                   <li>
-                        <img src="img/plico.png" />
-                        2014-07-20 14:51:56 
-                        <a>王二</a>
-                        发表评论
-                        <p>很棒的画家！</p>
-                    </li>
+            <?php $count=count($comment);?>
+            	<p>已有<?php echo $count;?> 位对此新闻感兴趣的网友发表了看法</p>
+                <ul id="commentList">
+                <?php   
+                
+              
+                foreach ($comment as $value)
+                {
+                	 print "<li>";
+                         print "<img src=\"img/plico.png\" /> ";
+                        echo  date('Y-m-d H:i:s', $value['create_time']);
+                        print " <a>".$value['userName']."</a>";
+                         print "发表评论";
+                         print "<p>".$value['comment']."</p>";
+                    print " </li>";
+                }
+                	 
+                	
+                ?>
+                    
+                  
                 </ul>
                 
             </div>
@@ -111,4 +115,69 @@
     </div>
     
 </div>
+
+<script type="text/javascript"> 
+    function changeCode(){
+         $("#verify_code").src ="/user/verify_image?r=" + Math.random();
+    }
+    $(function(){ 
+        //数字验证 
+        $("#getcode_num").click(function(){ 
+            $(this).attr("src",'code_num.php?' + Math.random()); 
+        }); 
+       
+    }); 
+    $("#chk_num").click(function(){ 
+    	 
+    	
+    	$("#code_num").attr("value","111");
+        var code_num = $("#code_num").val();
+        var result=0;
+        $.post("chk_code.php?act=num",{code:code_num},function(msg){ 
+            if(msg==1){ 
+            	$("#getcode_num").click();
+            	postComment();
+                
+            }else{ 
+                alert("验证码错误！"); 
+            } 
+          
+        }); 
+
+        
+    }); 
+function postComment()
+{
+	   //执行数据提交处理
+    var base_url =$("#baseurl").val();
+    var content_p=$("#content").val();
+    var username_p=$("#user_name").val();
+    var cmsid_p=$("#cmsid").val();
+    var cmstitle_p=$("#cmstitle").val();
+
+    var url1=base_url+"index.php/cms/AddComment";
+
+    $.ajax({
+        url:url1,
+        type:'POST',
+        data:{content:content_p,username:username_p,cmsid:cmsid_p,cmstitle:cmstitle_p},
+        success:function(data){
+           //清空画面数据
+           
+           alert("评论提交成功!");
+           
+              $('#content').val("");
+              $('#user_name').val("");
+              $('#code_num').val("");
+           //列表追加内容
+           $('#commentList').prepend(data);
+        },
+        error : function(a,b,v){
+			alert(a.status);
+			alert(a.readyState);
+		} 
+    });
+}
+    
+</script>
 <?php include 'foot.php'; ?>

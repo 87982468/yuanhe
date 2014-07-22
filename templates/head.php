@@ -29,6 +29,34 @@ $(function() {
 });
 </script>
 
+<script>
+//收藏
+
+function AddFavorite(sURL, sTitle) {
+sURL = encodeURI(sURL);
+try{
+window.external.addFavorite(sURL, sTitle);
+}catch(e) {
+try{
+window.sidebar.addPanel(sTitle, sURL, "");
+}catch (e) {
+alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+}
+}
+}
+//设为首页
+ function SetHome(url){ 
+ if (document.all) { 
+ document.body.style.behavior='url(#default#homepage)'; 
+ document.body.setHomePage(url); 
+ }else{ 
+ alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!"); 
+ } 
+ } 
+
+</script>
+
+
 
 <title>中国书画评论网</title>
 </head>
@@ -40,8 +68,8 @@ $(function() {
 <ul>
 	<li><a class="login ly" href="#">登陆</a></li>
 	<li><a class="reg ly" href="#">注册</a></li>
-	<li><a class="setindex lw" href="#">设为首页</a></li>
-	<li><a class="fova lw" href="#">加入收藏</a></li>
+	<li><a class="setindex lw"  onclick="SetHome('http://www.baidu.com');" href="javascript:void(0)">设为首页</a></li>
+	<li><a class="fova lw" onclick="AddFavorite('http://www.baidu.com','中国书画评论网');" href="javascript:void(0)">加入收藏</a></li>
 </ul>
 <div class="keyword">
 <ul>
@@ -68,7 +96,7 @@ foreach ($menuItem as $menu) {
 
 	if($menu['level']=='1')
 	{
-		print '<li><a href="'.base_url().'index.php/cms/viewlist?menu='.$menu['classid'].'">'.$menu['menu_name'].'</a>';
+		print '<li><a href="'.base_url().'index.php'.$menu['menu_link'].'">'.$menu['menu_name'].'</a>';
 
 
 		$menuTwoLevel=array();
@@ -83,7 +111,7 @@ foreach ($menuItem as $menu) {
 			print "<dl>";
 			//循环二级菜单
 			foreach ($menuTwoLevel as $value) {
-				print "<dd><a href=\"#\">▌".$value['menu_name']."</a></dd>";
+				print '<dd><a href="'.base_url().'index.php'.$value['menu_link'].'">'.$value['menu_name'].'</a></dd>';
 			}
 
 		}

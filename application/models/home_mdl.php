@@ -81,7 +81,7 @@ class Home_mdl extends CI_Model
 		//'书画动态'
 		$classid=$this->get_MenuClassId($type);
 			
-		print $classid;
+	
 		$table_menu = $this->db->dbprefix('u_c_menu');
 		$table_cms = $this->db->dbprefix('u_m_cms');
 

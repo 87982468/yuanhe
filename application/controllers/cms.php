@@ -26,13 +26,16 @@ class Cms extends CI_Controller {
 		$lastOneCms=$this->Cms_mdl->getCmsLastOne($id);
 		//下一篇
 		$nextOneCms=$this->Cms_mdl->getCmsNextOne($id);
+		//评论
+		$comment=$this->Cms_mdl->GetComment($id);
 		$data=array(
 
 			"result"=>$result,
 			"lastNewCms"=>$lastNewCms,
 			"hotCms"=>$hotCms,
 		"lastOneCms"=>$lastOneCms,
-		"nextOneCms"=>$nextOneCms
+		"nextOneCms"=>$nextOneCms,
+		"comment"=>$comment
 		);
 		return $this->load->view('cms_detail',$data);
 	}
@@ -85,12 +88,26 @@ class Cms extends CI_Controller {
 		"pageLink"=>$pageLink,
 		"hotCms"=>$hotCms
 		);
-
-
-
 		return $this->load->view('cms_list',$data);
-
-
+	}
+	
+	/*
+	 * 添加评论
+	 */
+	function AddComment()
+	{
+	 	$data['comment']= $this->input->post('content', TRUE);
+		$data['userName']= $this->input->post('username', TRUE);
+		$data['cms_id']= $this->input->post('cmsid', TRUE);
+		$data['cms_title']= $this->input->post('cmstitle', TRUE);
+		$data['userID']= $this->input->post('userID', TRUE);
+		$data['create_time']=time();
+		$data['create_user']=$this->session->userdata('uid');
+		$this->Cms_mdl->AddComment($data);
+		 
+		 
+		 echo '<li><img src="img/plico.png" /> '.date('Y-m-d H:i:s', $data['create_time']). '<a> '.$data['userName'].'</a> 发表评论   <p>'.$data['comment'].'</p> </li>';
+		
 	}
 }
 ?>

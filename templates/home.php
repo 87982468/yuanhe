@@ -1,15 +1,7 @@
 <?php include 'head.php'; ?>
 
 <div class="canvas" style="width: 1414px">
-<div class="nav2">
-<ul>
-	<li><a href="#">设计与人</a></li>
-	<li><a href="#">知识库</a></li>
-	<li><a href="#">设计与创业</a></li>
-	<li><a href="#">设计背景</a></li>
-	<li><a href="#">设计资源下载</a></li>
-</ul>
-</div>
+
 <div class="spread">
 
 <div class="v_photo">

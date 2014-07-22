@@ -165,5 +165,20 @@ class Cms_mdl extends CI_Model
 	  $this->db->insert($this->db->dbprefix('u_m_browse_record'), $data);
 		}
 	}
+	function  AddComment($value)
+	{
+	  $this->db->insert($this->db->dbprefix('u_m_cms_comment'), $value);
+	}
+	 
+	function  GetComment($cmsid)
+	{
+		$table_comment = $this->db->dbprefix('u_m_cms_comment');
+		$record=$this->db
+		->where('cms_id',$cmsid)
+		 ->order_by("create_time", 'desc')
+		->get($table_comment)
+		->result_array();
+		return $record;
+	}
 }
 ?>
