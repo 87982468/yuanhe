@@ -1,15 +1,16 @@
 <?php include 'head.php';?>
+ 
 <div class="content" style="width:1000px">
     <div class="pt">
     	<span>当前位置： </span>
-    	<a href="#" >中国书画评论网</a>
+    	<a href=<?php echo '"'.base_url().'index.php/home"'?> >中国书画评论网</a>
         <em>-</em>
-    	<a href="#" >国内书画动态</a>
+    	<a href=<?php echo '"'.base_url().'index.php/cms/Viewlist?menu='.$cmsType[0]['classid'].'">' ;?> ><?php  echo $cmsType[0]['menu_name'];?></a>
         <em>></em>
     	<span>正文</span>
     </div>
     <div class="l_linnk ab">
-    	<div class="l_header"><em>■</em>国内书画动态</div>
+    	<div class="l_header"><em>■</em><?php  echo $cmsType[0]['menu_name'];?></div>
         <div class="newsDetails">
         	<div class="caption">
             	<h1><?php  echo $result[0]['title'];?></h1>
@@ -28,9 +29,34 @@
             	<p>（责任编辑：<?php echo $result[0]['editor']; ?>）</p>
  				<p>注：本站上发表的所有内容，均为原作者的观点，不代表书画网的立场，也不代表本网站的价值判断。</p>
                 
-               <?php   echo '<a href="'.base_url().'index.php/cms/View?id='.$lastOneCms[0]['id'].'">'?> 上一篇：<?php if($lastOneCms[0]['writer']){  echo $lastOneCms[0]['writer']; echo':';} echo $lastOneCms[0]['title'];?></a>
-                <?php print '<a href="'.base_url().'index.php/cms/View?id='.$nextOneCms[0]['id'].'">'?>下一篇：<?php  if($nextOneCms[0]['writer']){echo $nextOneCms[0]['writer']; echo' : ';} echo $nextOneCms[0]['title'];?></a>
-            </div>
+               <?php 
+
+               if(count($lastOneCms)>0)
+               {
+               	echo '<a href="'.base_url().'index.php/cms/View?id='.$lastOneCms[0]['id'].'">' ;
+               	 echo '上一篇：';
+                if($lastOneCms[0]['writer']){ 
+                	echo $lastOneCms[0]['writer']; 
+                	echo':';
+                } 
+                echo $lastOneCms[0]['title']; 
+                echo '</a>';
+               }?>
+                   <?php
+				if(count($nextOneCms)>0)
+				{
+                echo '<a href="'.base_url().'index.php/cms/View?id='.$nextOneCms[0]['id'].'">'; 
+                echo "下一篇："; 
+                  if($nextOneCms[0]['writer'])
+                  {echo $nextOneCms[0]['writer']; echo' : ';
+                  } 
+                  echo $nextOneCms[0]['title'];
+                
+                	echo "</a>";
+				}
+                ?>
+               
+               </div>
             
         </div>
  <div class="comment">
@@ -115,6 +141,7 @@
     </div>
     
 </div>
+
 
 <script type="text/javascript"> 
     function changeCode(){

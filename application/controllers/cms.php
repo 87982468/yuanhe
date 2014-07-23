@@ -18,6 +18,7 @@ class Cms extends CI_Controller {
 		//CMSid
 		$id= intval($this->input->get ( 'id' ));
 
+		
 		$result=$this->Cms_mdl->getCmsById($id);
 		$lastNewCms=$this->Cms_mdl->getLastNewCms();
 		//最热文章
@@ -28,6 +29,8 @@ class Cms extends CI_Controller {
 		$nextOneCms=$this->Cms_mdl->getCmsNextOne($id);
 		//评论
 		$comment=$this->Cms_mdl->GetComment($id);
+		// 栏目
+		$cmsType=$this->Cms_mdl->getCmsTypeByID($id);
 		$data=array(
 
 			"result"=>$result,
@@ -35,7 +38,8 @@ class Cms extends CI_Controller {
 			"hotCms"=>$hotCms,
 		"lastOneCms"=>$lastOneCms,
 		"nextOneCms"=>$nextOneCms,
-		"comment"=>$comment
+		"comment"=>$comment,
+		"cmsType"=>$cmsType
 		);
 		return $this->load->view('cms_detail',$data);
 	}
@@ -48,8 +52,9 @@ class Cms extends CI_Controller {
 
 		//总记录数
 
-		$menuId= $this->input->get ( 'menu' );
-		
+		$menuId= $this->input->get('menu');
+		 
+		  
 		$this->load->library('pagination');
 		$this->load->helper('url');       //系统的帮助类
 		$config['per_page'] = 4; //配置每页显示的记录数
@@ -61,10 +66,10 @@ class Cms extends CI_Controller {
 
 		$result=$this->Cms_mdl->getCmsByType($menuId,$config ['per_page'],$this->uri->segment(3),false);//当前页显示的数据
 
-		$config['base_url'] =  base_url()."index.php/cms/viewList";
+		$config['base_url'] =  base_url()."index.php/cms/viewList?"."menu=".$menuId."";
 			
 		$config['total_rows'] = $number;  //配置记录总条数
-
+$config['page_query_string'] = TRUE;  
 		
 		$config['next_link'] = '下一页';
 		$config['prev_link'] = '上一页';
@@ -79,6 +84,7 @@ class Cms extends CI_Controller {
 		$lastNewCms=$this->Cms_mdl->getLastNewCms();
 		//最热文章
 		$hotCms=$this->Cms_mdl->getHotCms();
+		$menuDs=$this->Cms_mdl->getTypeByID($menuId);
 		
 		$this->pagination->initialize($config);
 		$pageLink= $this->pagination->create_links();
@@ -86,7 +92,9 @@ class Cms extends CI_Controller {
 		"lastNewCms"=>$lastNewCms,
 		"result"=>$result,
 		"pageLink"=>$pageLink,
-		"hotCms"=>$hotCms
+		"hotCms"=>$hotCms,
+		"menuid"=>$menuId,
+		"menuDs"=>$menuDs
 		);
 		return $this->load->view('cms_list',$data);
 	}

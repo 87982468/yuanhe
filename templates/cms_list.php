@@ -4,12 +4,12 @@
 <div class="content" style="width:1000px">
     <div class="pt">
     	<span>当前位置： </span>
-    	<a href="#" >中国书画评论网</a>
+    	<a href=<?php echo '"'.base_url().'index.php/home"'?> >中国书画评论网</a>
         <em>-</em>
-    	<a href="#" >国内书画动态</a>
+    	<a href=<?php echo '"'.base_url().'index.php/cms/Viewlist?menu='.$menuDs[0]['classid'].'">' ;?> ><?php  echo $menuDs[0]['menu_name'];?></a>
     </div>
     <div class="l_linnk">
-    	<div class="l_header"><em>■</em>国内书画动态</div>
+    	<div class="l_header"><em>■</em><?php  echo $menuDs[0]['menu_name'];?></div>
         <div class="con_news">
         <?php 
         foreach ($result as $value)
@@ -76,6 +76,7 @@
             </ul>
         </div>
     </div>
+    <input type="hidden" name="menu" value=<?php echo $menuid;?>>
 </div>
 
-<?php include 'foot.php';?>
+<?php  include 'foot.php';?>

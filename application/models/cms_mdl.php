@@ -24,7 +24,19 @@ class Cms_mdl extends CI_Model
 		$this->InsertBrowse_Record($result);
 		return $result;
 	}
+	function getCmsTypeByID($id)
+	{
+		$sql="SELECT b.id,d.classid,d.menu_name FROM dili_u_c_menu d
+inner join dili_u_m_cms b on  b.menu_name=d.classid
+where b.id=".intval($id);
+		 
+		
+		return $this->db->query($sql)->result_array();
+		
+	}
 
+	
+	
 	/*
 	 * 获取文章的上一篇
 	 */
@@ -33,7 +45,7 @@ class Cms_mdl extends CI_Model
 
 		$sql="SELECT * FROM dili_u_m_cms d
 				where create_time<(select create_time from dili_u_m_cms where id=".intval($id).
-				") order by create_time desc	limit 0,1";
+				") and menu_name=(select menu_name from dili_u_m_cms where id=".intval($id).") order by create_time desc	limit 0,1";
 	return	$this->db->query($sql)->result_array();
 
 	}
@@ -44,7 +56,7 @@ class Cms_mdl extends CI_Model
 	{
 		$sql="SELECT * FROM dili_u_m_cms d
 				where create_time>(select create_time from dili_u_m_cms where id=".intval($id).
-				") order by create_time asc	limit 0,1";
+				")  and menu_name=(select menu_name from dili_u_m_cms where id=".intval($id).")   order by create_time asc	limit 0,1";
 		
 		return $this->db->query($sql)->result_array();
 	}
@@ -179,6 +191,15 @@ class Cms_mdl extends CI_Model
 		->get($table_comment)
 		->result_array();
 		return $record;
+	}
+	
+	
+function getTypeByID($id)
+	{
+		$result= $this->db->select('*')
+		->where('classid',$id)
+		->get($this->db->dbprefix('u_c_menu'))->result_array() ;
+		return $result;
 	}
 }
 ?>
